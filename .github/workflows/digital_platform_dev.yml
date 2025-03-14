@@ -1,0 +1,21 @@
+name: Notify Digital Platform Dev
+run-name: ${{ inputs.subject }}
+on:
+  workflow_dispatch:
+    inputs:
+      subject:
+        type: string
+      body:
+        type: string
+      id:
+        type: string
+      failure:
+        type: boolean
+
+jobs:
+  notify:
+    uses: ./.github/workflows/notification.yml
+    with:
+      id: ${{ inputs.id }}
+      body: ${{ inputs.body }}
+      failure: ${{ inputs.failure }}
