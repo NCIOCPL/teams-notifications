@@ -1,0 +1,21 @@
+name: Notify
+on:
+  workflow_call:
+    inputs:
+      id:
+        type: string
+      body:
+        type: string
+
+jobs:
+  id:
+    name: Workflow ID
+    runs-on: ubuntu-latest
+    steps:
+      - name: ${{ inputs.id }}
+        run: echo run identifier ${{ inputs.id }}
+      
+      - name: Job summary
+        run: | 
+          echo '### Job Summary' >> $GITHUB_STEP_SUMMARY
+          echo '${{ inputs.body }}' >> $GITHUB_STEP_SUMMARY
